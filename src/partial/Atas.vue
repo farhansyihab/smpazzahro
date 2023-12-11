@@ -3,12 +3,12 @@
         <div class="container">
             <div class="d-flex justify-content-between topbar">
                 <div class="top-info">
-                    <small class="me-3 text-white-50"><a href="mailto:smkazzahropalembang@gmail.com"><i class="fas fa-envelope fa-2x me-2 text-secondary"></i></a></small>
+                    <small class="me-3 text-white-50"><a href="mailto:smkazzahropalembang@gmail.com"><i class="bi bi-envelope-at me-2 text-secondary" style="font-size: 25px;"></i></a></small>
                 </div>
                 <div id="note" class="text-secondary d-none d-xl-flex"><small>Trust us to bring Your vision to live</small></div>
                 <div class="top-link">
-                    <a href="https://wa.me/62895388726164" class="bg-primary nav-fill btn btn-sm-square rounded-circle"><i class="fab fa-whatsapp fa-2x text-dark"></i></a>
-                    <a href="https://www.instagram.com/smkazzahro_/" class="bg-primary nav-fill btn btn-sm-square rounded-circle"><i class="fab fa-instagram fa-2x text-dark"></i></a>
+                    <a href="https://wa.me/62895388726164" class="bg-primary nav-fill btn btn-sm-square rounded-circle"><i class="bi bi-whatsapp text-dark" style="font-size: 20px;"></i></a>
+                    <a href="https://www.instagram.com/smkazzahro_/" class="bg-primary nav-fill btn btn-sm-square rounded-circle"><i class="bi bi-instagram text-dark" style="font-size: 20px;"></i></a>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 <div class="d-none d-xl-flex flex-shirink-0">
                     <div id="phone-tada" class="d-flex align-items-center justify-content-center me-4">
                         <a href="https://wa.me/62895388726164" class="position-relative animated tada infinite">
-                            <i class="fa fa-phone-alt text-white fa-2x"></i>
+                            <i class="bi bi-telephone bi-2x" style="font-size: 35px;"></i>
                             <div class="position-absolute" style="top: -7px; left: 20px;">
                                 <span><i class="fa fa-comment-dots text-secondary"></i></span>
                             </div>
@@ -63,7 +63,7 @@
                         <span style="color: white;">WA: +62 895-3887-26164</span>
                     </div>
                     <div class="d-flex align-items-center justify-content-center ms-4 ">
-                        <a v-bind:href="state.urlDepan" ><i class="bi bi-search text-white fa-2x"></i> </a>
+                        <a v-bind:href="state.urlDepan" ><i class="bi bi-search text-white" style="font-size: 35px;"></i> </a>
                     </div>
                 </div>
             </nav>
