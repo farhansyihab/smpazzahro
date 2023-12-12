@@ -20,7 +20,7 @@
         <div class="container">
             <nav class="navbar navbar-dark navbar-expand-lg py-0">
                 <a :href="state.urlDepan"> <!-- tidak pakai router link karena pengaruh ke active nav-->
-                    <h1 id="txtsmk" class="fw-bold d-block">SMK <span id="txtazzahro">AZZAHRO</span> </h1>
+                    <h1 id="txtsmk" class="fw-bold d-block">SMP <span id="txtazzahro">AZZAHRO</span> </h1>
                 </a>
                 <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarSMK">
                     <span class="navbar-toggler-icon"></span>
