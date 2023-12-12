@@ -16,24 +16,15 @@ import router from './router'
 
 
 import { initializeApp } from "firebase/app";
-// import { getAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 //import { getAnalytics } from "firebase/analytics";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCdUCQEH1r8F0l_SYYZJ3NpqorfedkX-Oc",
-    authDomain: "smpazzahro-palembang.firebaseapp.com",
-    databaseURL: "https://smpazzahro-palembang-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "smpazzahro-palembang",
-    storageBucket: "smpazzahro-palembang.appspot.com",
-    messagingSenderId: "643017840013",
-    appId: "1:643017840013:web:bec73038370e16155119c4"
-  };
+import firebaseConfig from './firebase/firebaseSettings'
 
   // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
-// const auth        = getAuth(firebaseApp);
+const auth        = getAuth(firebaseApp);
 // const provider    = new GoogleAuthProvider();
 const fbDatabase  = getDatabase(firebaseApp);
 //const analytics   = getAnalytics(firebaseApp);
@@ -45,4 +36,5 @@ createApp(App)
   .use(router)
   .use(firebaseApp)
   .use(fbDatabase)
+  .use(auth)
   .mount('#app')

@@ -74,9 +74,10 @@
 
 <script>
 import {reactive, computed} from "vue";
-import { signOut  } from "firebase/auth"
-import { auth } from '../firebase/index.js'
+import { getAuth, signOut  } from "firebase/auth"
+// import { auth } from '../firebase/index.js'
 import { userData } from "../store/user/index.js"
+const auth = getAuth()
 export default {
 name: 'Atas',
     setup() {

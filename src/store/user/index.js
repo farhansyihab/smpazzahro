@@ -1,8 +1,9 @@
 import { defineStore } from "pinia";
 import router from "../../router/index.js"
-import { auth } from '../../firebase/index.js'
+// import { auth } from '../../firebase/index.js'
 import { signInWithEmailAndPassword, signOut, getAuth, signInWithPopup, GoogleAuthProvider  } from "firebase/auth"
 import { getDatabase, ref, onValue , update } from "firebase/database";
+const auth = getAuth()
 
 export const userData = defineStore ({
     id: "user",
