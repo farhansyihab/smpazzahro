@@ -13,33 +13,35 @@ export default {
     setup() {
         const state = reactive({
             status: true,
-            generateHTML: computed(() => {
-                const beritanya = beritaData();
-                const objData   = beritanya.posts
-                const dataCard  = objData.map( (data) => {
-                    const isi = {};
-                    let potong          = data.content.split("<a name='more'></a>")
-                    let htmlid          = `<br><a href='/detailinfo/${data.id}' class="btn btn-primary">Baca selengkapnya</a>`
-                    isi.title           = data.title;
-                    isi.description     = potong[0] + htmlid
-                    return isi
-                })
-                const objHTML       = new CardGen(dataCard)
-                const htmlData      = objHTML.generateCards()
-                // let htmlData    = '';
-                // for(let index = 0; index < objData.length; index++){
-                //     let id      = objData[index].id
-                //     let htmlid  = `<div class="card-footer"><a href='/detailinfo/${id}' class="btn btn-primary">Baca selengkapnya</a></div>`
-                //     let judul   = `<div class="card-header"><h2 class="card-title">${objData[index].title} </h2></div>`;
-                //     let potong  = objData[index].content.split("<a name='more'></a>")
-                //     let isi     = `<div class="card-body">${potong[0]}</div>`
-                //     htmlData    = htmlData + `<div class="card">${judul} ${isi}${htmlid}</div></div>` ;
-                // }
-                const lebarLayar    = window.screen.availWidth;
-                if(lebarLayar < 500){
-                    return `<div class='isiInfo'>${htmlData}</div>`;
+            posts: null,
+            generateHTML: computed(() => { 
+                const bentukHTML = () =>{
+                    const objData   = state.posts
+                    const dataCard  = objData.map( (data, index) => {
+                            const isi = {};
+                            let potong          = data.content.split("<!--more-->")
+                            let htmlid          = `<br><a href='/detailinfo/${index}' class="btn btn-primary">Baca selengkapnya</a>`
+                            isi.title           = data.title;
+                            isi.description     = potong[0] + htmlid
+                            return isi
+                    })                
+                    const objHTML       = new CardGen(dataCard)
+                    const htmlData      = objHTML.generateCards()
+                    const lebarLayar    = window.screen.availWidth;
+                    if(lebarLayar < 500){
+                        return `<div class='isiInfo'>${htmlData}</div>`;
+                    }else{
+                        return `<div class='isiInfo' style='padding-top: 10px; display: grid; grid-template-columns: auto auto ; gap: 10px; grid-auto-rows: minmax(100px, auto);'>${htmlData}</div>`;
+                    }                    
+                }
+
+                if(state.posts === null){
+                    beritaData().fetchData().then((response) => {
+                        state.posts = response
+                        return bentukHTML()                    
+                    })
                 }else{
-                    return `<div class='isiInfo' style='padding-top: 10px; display: grid; grid-template-columns: auto auto ; gap: 10px; grid-auto-rows: minmax(100px, auto);'>${htmlData}</div>`;
+                    return bentukHTML()
                 }
             })
         })
@@ -47,11 +49,22 @@ export default {
     },
     methods: {
         ambilData() {
-            const beritanya = beritaData();
-            beritanya.fetchPosts()
+            const penyimpanan   = window.localStorage;
+            const entries       = penyimpanan.getItem("dataBlog");
+            if(entries != null){
+                try{
+                const objEntries      = JSON.parse(entries)
+                this.state.posts      = objEntries
+                }catch(err) {console.log(err)}
+            }else{
+                beritaData().fetchData().then((response) => {
+                const objPost           = response
+                this.state.posts        = objPost
+                })
+            }   
         }
     },
-    mounted() {
+    beforeMount() {
         this.ambilData()
     }    
 }
