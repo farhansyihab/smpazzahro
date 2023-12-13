@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 
+src/firebase/*
 src/firebase/firebaseSettings.js
 
 # Editor directories and files
