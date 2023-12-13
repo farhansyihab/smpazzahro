@@ -13,6 +13,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createPinia } from 'pinia'
 import router from './router'
+import CKEditor from '@ckeditor/ckeditor5-vue';
 
 
 import { initializeApp } from "firebase/app";
@@ -37,4 +38,5 @@ createApp(App)
   .use(firebaseApp)
   .use(fbDatabase)
   .use(auth)
+  .use(CKEditor)
   .mount('#app')

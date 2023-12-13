@@ -42,7 +42,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Menu User</a>
                             <div class="dropdown-menu rounded">
                                 <router-link @click="tutupNavBar()" :to="{ name: 'tambahuser'}" class="dropdown-item">Tambah User</router-link>
-                                <!-- <router-link @click="tutupNavBar()" :to="{ name: 'datacontact'}" class="dropdown-item">Respon Pengunjung</router-link> -->
+                                <router-link @click="tutupNavBar()" :to="{ name: 'inputblog'}" class="dropdown-item">Input Berita</router-link>
                                 <router-link @click="LogOut()" :to="{ name: 'depan'}" class="dropdown-item">LogOut</router-link>
                             </div>
                         </div>

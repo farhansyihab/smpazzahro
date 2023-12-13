@@ -42,7 +42,12 @@ const routes = [
     path: '/tambahuser',
     name: 'tambahuser',
     component: () => import(/* webpackChunkName: "formadduser" */ '../pages/user/formAddUser.vue')
-  },  
+  },
+  {
+    path: '/inputblog',
+    name: 'inputblog',
+    component: () => import(/* webpackChunkName: "frmInputBlog" */ '../pages/data/frmInputBlog.vue')
+  }, 
 ]
 
 const router = createRouter({
