@@ -7,6 +7,7 @@
             v-model="editorData" 
             :config="editorConfig">
         </ckeditor>
+        <button class="btn btn-primary" @click="simpanData()">Simpan</button>
     </div>
 </template>
 
@@ -26,6 +27,7 @@
     import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 	import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
 	import { Alignment } from '@ckeditor/ckeditor5-alignment';
+    import { beritaData } from "../../store/blog/index.js"
 
     export default {
         name: 'FrmInputBlog',
@@ -88,6 +90,15 @@
                     }                    
                 }
             };
+        },
+        methods:{
+            simpanData(){
+                beritaData().inputBlog(this.judulBlog, this.editorData).then((response) =>{
+                    if(response === true){
+                        console.log("Berhasil kirim data")
+                    }
+                }).catch((err) => { console.log(err)})
+            }
         }
     };
 </script>

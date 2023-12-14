@@ -21,7 +21,7 @@ import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 //import { getAnalytics } from "firebase/analytics";
-import firebaseConfig from './firebase/firebaseSettings'
+import firebaseConfig from '../firebase/firebaseSettings.js'
 
   // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);

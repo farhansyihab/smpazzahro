@@ -43,6 +43,20 @@ export const beritaData = defineStore({
                     }, { onlyOnce : true})
                 }catch (error){reject(error)}
             })
+        },
+        inputBlog: function(judul, isi){
+            const db            = getDatabase();
+            const tblref        = ref(db, '/aplikasi/blog/');
+            const dataUpdate    = {
+                title: judul,
+                content: isi                
+            }
+            return new Promise(function(resolve, reject){
+                try{
+                    tblref.push(dataUpdate)
+                    resolve(true)
+                }catch (error){reject(error)}
+            })           
         }
     }
 })
