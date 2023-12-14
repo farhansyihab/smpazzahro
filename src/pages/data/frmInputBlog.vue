@@ -93,11 +93,7 @@
         },
         methods:{
             simpanData(){
-                beritaData().inputBlog(this.judulBlog, this.editorData).then((response) =>{
-                    if(response === true){
-                        console.log("Berhasil kirim data")
-                    }
-                }).catch((err) => { console.log(err)})
+                beritaData().inputBlog(this.judulBlog, this.editorData)
             }
         }
     };

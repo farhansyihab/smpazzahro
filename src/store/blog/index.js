@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { getDatabase, ref, onValue } from "firebase/database";
+import { blogDataService } from "../../../firebase/DataService.js"
 
 export const beritaData = defineStore({
     id: "berita",
@@ -45,18 +46,12 @@ export const beritaData = defineStore({
             })
         },
         inputBlog: function(judul, isi){
-            const db            = getDatabase();
-            const tblref        = ref(db, '/aplikasi/blog/');
-            const dataUpdate    = {
-                title: judul,
-                content: isi                
-            }
-            return new Promise(function(resolve, reject){
-                try{
-                    tblref.push(dataUpdate)
-                    resolve(true)
-                }catch (error){reject(error)}
-            })           
+            const dataBlog = new blogDataService();
+            dataBlog.addData(isi, judul).then((response) =>{
+              if(response)  {
+                this.fetchData()
+              }
+            })        
         }
     }
 })
