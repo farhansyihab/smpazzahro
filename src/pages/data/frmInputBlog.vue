@@ -1,7 +1,10 @@
 <template>
     <div class="container" style="padding-top: 20px;">
-        <label for="judulBerita">Judul : </label>
-        <input id="judulBerita" type="text" placeholder="masukkan judul disini" v-model="judulBlog"/>
+        <div class="mb-3">
+            <label for="judulBerita"><strong>Judul</strong> : &nbsp;&nbsp;</label>
+            <input id="judulBerita" type="text" placeholder="masukkan judul disini" v-model="judulBlog"/>
+        </div>
+
         <ckeditor 
             :editor="editor" 
             v-model="editorData" 
@@ -20,6 +23,7 @@
 		ImageToolbar,
 		ImageUpload
 	} from '@ckeditor/ckeditor5-image';
+    import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
     import { Essentials } from '@ckeditor/ckeditor5-essentials';
     import { Bold, Italic } from '@ckeditor/ckeditor5-basic-styles';
     import { Link } from '@ckeditor/ckeditor5-link';
@@ -50,7 +54,8 @@
 						ImageToolbar,
 						ImageUpload,
 						Alignment,
-						List						
+						List,
+                        SourceEditing						
                     ],
 
                     toolbar: {
@@ -66,7 +71,8 @@
 							'|',
 							'imageUpload',
                             'imageStyle',
-							'|',							
+							'|',
+                            'sourceEditing',
                             'undo',
                             'redo'
                         ]
@@ -117,6 +123,7 @@ main .ck-editor[role='application'] .ck.ck-content,
 /* Inline & Balloon build. */
 .ck.editor[role='textbox'] {
 	width: 100%;
+    height: auto;
 	background: #fff;
 	font-size: 1em;
 	line-height: 1.6em;
@@ -128,6 +135,7 @@ main .ck-editor[role='application'] .ck.ck-content,
 	background: #fff;
 	border: 1px solid hsl(0, 0%, 70%);
 	width: 100%;
+    height: auto;
 }
 
 /* Because of sidebar `position: relative`, Edge is overriding the outline of a focused editor. */
@@ -148,4 +156,7 @@ main .ck-editor[role='application'] .ck.ck-content,
 .editor-container--with-sidebar > .ck.ck-editor {
 	width: calc( 100% - var(--ck-sample-sidebar-width) );
 }
+/* .ck-blurred .ck .ck-content .ck-editor__editable .ck-rounded-corners .ck-editor__editable_inline{
+    height: 800px;
+} */
 </style>
