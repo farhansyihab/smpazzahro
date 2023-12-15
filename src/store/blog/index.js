@@ -10,7 +10,7 @@ export const beritaData = defineStore({
 
     getters: {
         getPostById: (state) => (id) => {
-            return state.posts.find(post => post.id === id)
+            return state.posts[id]
         },
         getAllPost: (state) => {
             return state.posts

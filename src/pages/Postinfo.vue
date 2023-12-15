@@ -19,10 +19,11 @@ export default {
                     const objData   = state.posts
                     const dataCard  = objData.map( (data, index) => {
                             const isi = {};
-                            let potong          = data.content.split("<!--more-->")
+                            let txtString       = data.content.replace(/<[^>]*>?/gm, '')
+                            let potong          = txtString.split(/\s+/).slice(0,50).join(" ")
                             let htmlid          = `<br><a href='/detailinfo/${index}' class="btn btn-primary">Baca selengkapnya</a>`
                             isi.title           = data.title;
-                            isi.description     = potong[0] + htmlid
+                            isi.description     = potong + "&nbsp; ..... &nbsp;" + htmlid
                             return isi
                     })                
                     const objHTML       = new CardGen(dataCard)
@@ -75,5 +76,8 @@ p {
 }
 .card-body{
     text-align: justify;
+}
+p {
+    text-align: justify !important;
 }
 </style>

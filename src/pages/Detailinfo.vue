@@ -47,7 +47,7 @@ export default {
     methods: {
         ambilData() {
             const beritanya = beritaData();
-            beritanya.fetchPosts()
+            beritanya.fetchData()
         }
     }
 }
