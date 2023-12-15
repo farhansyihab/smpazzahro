@@ -50,19 +50,20 @@ export default {
     },
     methods: {
         ambilData() {
+            const online        = navigator.onLine;
             const penyimpanan   = window.localStorage;
             const entries       = penyimpanan.getItem("dataBlog");
-            if(entries != null){
+            if(online == true){
+                beritaData().fetchData().then((response) => {
+                const objPost           = response
+                this.state.posts        = objPost
+                })                
+            }else{
                 try{
                 const objEntries      = JSON.parse(entries)
                 this.state.posts      = objEntries
                 }catch(err) {console.log(err)}
-            }else{
-                beritaData().fetchData().then((response) => {
-                const objPost           = response
-                this.state.posts        = objPost
-                })
-            }   
+            }
         }
     },
     beforeMount() {
