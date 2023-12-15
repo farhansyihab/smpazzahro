@@ -21,14 +21,20 @@ export default {
         const route         = useRoute()
         const state = reactive({
             status: true,
+            objBerita: null,
             generateHTML: computed(() => {
                 const parameter = route.params.id ;
-                const beritanya = beritaData();
-                const objData   = beritanya.getPostById(parameter);
-                const judul     = `<h2>${objData.title} </h2>`;
-                const isiKonten = `<div>${objData.content}</div>` ;
-                const htmlData  = `<div>${judul} ${isiKonten}</div>` ;
-                return htmlData ;
+                try{
+                    if(state.objBerita === null){
+                        console.log("Tunggu berita masuk ....")
+                    }else{
+                        const judul     = `<h2>${state.objBerita[parameter].title} </h2>`;
+                        const isiKonten = `<div style="text-align:justify">${state.objBerita[parameter].content}</div>` ;
+                        const htmlData  = `<div>${judul} ${isiKonten}</div>` ;
+                        return htmlData ;
+                    }
+
+                }catch (error){console.log(error)}
             }),
             sosmedShare: computed(() => {
                 const parameter = route.params.id ;
@@ -43,11 +49,13 @@ export default {
         })
         return {state};
     },
-    beforeMount(){ this.ambilData()},
+    mounted(){ this.ambilData()},
     methods: {
         ambilData() {
             const beritanya = beritaData();
-            beritanya.fetchData()
+            beritanya.fetchData().then((response)=>{
+                this.state.objBerita = response
+            })
         }
     }
 }
