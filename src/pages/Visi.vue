@@ -54,4 +54,7 @@ export default {
 section {
   padding-top: 10px;
 }
+.container{
+  padding-top: 10px;
+}
 </style>
