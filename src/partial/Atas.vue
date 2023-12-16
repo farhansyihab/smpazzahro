@@ -33,8 +33,8 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Visi & Misi</a>
                             <div class="dropdown-menu rounded">
-                                <router-link @click="tutupNavBar()" :to="{ path: '/visi', hash: '#visi'}" class="dropdown-item">Visi & Misi Satuan Pendidikan</router-link>
-                                <router-link @click="tutupNavBar()" :to="{ path: '/visi', hash: '#tujuan'}" class="dropdown-item">Tujuan Satuan Pendidikan</router-link>
+                                <router-link @click="tutupNavBar()" :to="{ path: '/visi', hash: '#visi'}" class="dropdown-item">Visi & Misi</router-link>
+                                <router-link @click="tutupNavBar()" :to="{ path: '/visi', hash: '#tujuan'}" class="dropdown-item">Tujuan</router-link>
                             </div>
                         </div>
                         <router-link @click="tutupNavBar()" :to="{ path: '/login'}" class="nav-item nav-link" class-active="active" v-if="!state.cekUlangLogin">Login</router-link>
