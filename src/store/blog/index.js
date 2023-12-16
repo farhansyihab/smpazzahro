@@ -46,12 +46,20 @@ export const beritaData = defineStore({
             })
         },
         inputBlog: function(judul, isi){
+            const ambilDt = this.fetchData
             const dataBlog = new blogDataService();
-            dataBlog.addData(isi, judul).then((response) =>{
-              if(response)  {
-                this.fetchData()
-              }
-            })        
+            return new Promise(function(resolve, reject){
+                try {
+                    dataBlog.addData(isi, judul).then((response) =>{
+                        if(response)  {
+                          this.ambilDt
+                        }
+                      })
+                      resolve(true)                    
+                } catch (error) {
+                    reject(error)
+                }                
+            })
         }
     }
 })

@@ -11,7 +11,6 @@
 <script>
 import { computed, reactive } from "vue";
 import { useRoute } from 'vue-router';
-import { beritaData } from "../store/blog/index.js"
 export default {
     name: "Detailinfo",
     setup() {
@@ -34,7 +33,7 @@ export default {
                         return htmlData ;
                     }
 
-                }catch (error){console.log(error)}
+                }catch (error){console.log("laporan kesalahan : "+ error)}
             }),
             sosmedShare: computed(() => {
                 const parameter = route.params.id ;
@@ -52,10 +51,10 @@ export default {
     mounted(){ this.ambilData()},
     methods: {
         ambilData() {
-            const beritanya = beritaData();
-            beritanya.fetchData().then((response)=>{
-                this.state.objBerita = response
-            })
+            const penyimpanan       = window.localStorage
+            const entries           = penyimpanan.getItem("dataBlog")
+            const posts             = JSON.parse(entries)
+            this.state.objBerita    = posts
         }
     }
 }

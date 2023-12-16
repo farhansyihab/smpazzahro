@@ -32,6 +32,7 @@
 	import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
 	import { Alignment } from '@ckeditor/ckeditor5-alignment';
     import { beritaData } from "../../store/blog/index.js"
+    import router from '../../router/index.js';
 
     export default {
         name: 'FrmInputBlog',
@@ -99,7 +100,11 @@
         },
         methods:{
             simpanData(){
-                beritaData().inputBlog(this.judulBlog, this.editorData)
+                beritaData().inputBlog(this.judulBlog, this.editorData).then((response) =>{
+                    if(response){
+                        router.push('/info')
+                    }
+                })
             }
         }
     };
