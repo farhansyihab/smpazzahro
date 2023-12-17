@@ -7,8 +7,8 @@
                 </div>
                 <div id="note" class="text-secondary d-none d-xl-flex"><small>Trust us to bring Your vision to live</small></div>
                 <div class="top-link">
-                    <a href="https://wa.me/62895388726164" class="bg-primary nav-fill btn btn-sm-square rounded-circle"><i class="bi bi-whatsapp text-dark" style="font-size: 20px;"></i></a>
-                    <a href="https://www.instagram.com/smkazzahro_/" class="bg-primary nav-fill btn btn-sm-square rounded-circle"><i class="bi bi-instagram text-dark" style="font-size: 20px;"></i></a>
+                    <a href="https://wa.me/62895388726164" class="nav-fill btn btn-sm-square rounded-circle"><i class="bi bi-whatsapp text-light" style="font-size: 25px;"></i></a>
+                    <a href="https://www.instagram.com/smkazzahro_/" class="nav-fill btn btn-sm-square rounded-circle"><i class="bi bi-instagram text-light" style="font-size: 25px;"></i></a>
                 </div>
             </div>
         </div>
@@ -19,9 +19,9 @@
     <div id="navigasi" class="container-fluid">
         <div class="container">
             <nav class="navbar navbar-dark navbar-expand-lg py-0">
-                <a :href="state.urlDepan"> <!-- tidak pakai router link karena pengaruh ke active nav-->
-                    <h1 id="txtsmk" class="fw-bold d-block">SMP <span id="txtazzahro">AZZAHRO</span> </h1>
-                </a>
+                <div @click="kedepan"> <!-- tidak pakai router link karena pengaruh ke active nav-->
+                    <h1 id="txtsmk" class="fw-bold d-block text-success-emphasis">SMP <span id="txtazzahro">AZZAHRO</span> </h1>
+                </div>
                 <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarSMK">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -52,7 +52,7 @@
                 <div class="d-none d-xl-flex flex-shirink-0">
                     <div id="phone-tada" class="d-flex align-items-center justify-content-center me-4">
                         <a href="https://wa.me/62895388726164" class="position-relative animated tada infinite">
-                            <i class="bi bi-telephone bi-2x" style="font-size: 35px;"></i>
+                            <i class="bi bi-telephone bi-2x" style="font-size: 35px; color:green !important;"></i>
                             <div class="position-absolute" style="top: -7px; left: 20px;">
                                 <span><i class="fa fa-comment-dots text-secondary"></i></span>
                             </div>
@@ -75,7 +75,7 @@
 <script>
 import {reactive, computed} from "vue";
 import { getAuth, signOut  } from "firebase/auth"
-// import { auth } from '../firebase/index.js'
+import router from '../router/index.js';
 import { userData } from "../store/user/index.js"
 const auth = getAuth()
 export default {
@@ -122,7 +122,14 @@ name: 'Atas',
                 }
                 userData().SET_INFO(userdt)  
             })
-        },     
+        },
+        kedepan(){
+            router.push('/')
+            const navBar = document.getElementById('navbarSMK');
+            navBar.classList.toggle('hide');
+            navBar.classList.remove('show');
+            this.state.statusNavBar = false
+        }
     }
 
 }
@@ -135,8 +142,9 @@ name: 'Atas',
  } */
  nav a.router-link-active,
  nav a.router-link-exact-active {
-   color: rgb(12, 79, 138);
+   color: rgb(8, 97, 5);
    cursor: pointer;
+   font:bolder;
  }
  #navigasi{
     background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
