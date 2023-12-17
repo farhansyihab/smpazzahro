@@ -17,6 +17,9 @@ firebase/*
 firebase/
 firebase/firebaseSettings.js
 
+.firebase
+.firebase/
+.firebase/*
 
 # Editor directories and files
 .vscode/*
